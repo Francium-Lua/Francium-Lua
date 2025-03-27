@@ -39,7 +39,7 @@ print("Access Granted. Welcome, " .. player.Name .. "!")
 
 
 
-loadstring(game:HttpGet("https://pastebin.com/dsc0PbAY"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/dsc0PbAY"))()
 
 
 
