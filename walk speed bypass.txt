@@ -1,0 +1,21 @@
+local mt = getrawmetatable(game)
+local old = mt.__namecall
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+
+    if CameraEnabled and not checkcaller() and method == "FireServer" then
+        for i, v in pairs(args) do
+            if typeof(v) == "Vector3" or typeof(v) == "CFrame" then
+                remote = self
+                argument = i
+                firesignal_args = args
+            end
+        end
+    end
+    return old(self, ...)
+end)
+
+setreadonly(mt, true)
